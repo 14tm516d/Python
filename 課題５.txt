@@ -1,0 +1,118 @@
+練習問題5.1
+
+<module> 
+print_n   n → 2
+print_n   n → 1
+print_n   n → 0
+
+
+練習問題5.2
+関数オブジェクトと一つの数ｎを仮引数とする再帰関数
+以下プログラム
+
+def do_n(a,n):
+	if n <= 0:
+		return
+	a()
+	do_n(a,n-1)
+
+練習問題5.3
+
+１． 四つ仮引数a,b,c,n を持つ関数check_fermat を作成せよ。
+以下プログラム
+
+def print_f():
+	print "だめだ。成り立たない"
+
+def check_fermat(a,b,c,n):
+	if n <= 2 :
+		print_f()
+		return
+	elif (a**n + b**n == c**n):
+		print "おやまあ、フェルマーは間違っている"
+		return
+	else:
+		 print_f()
+
+
+２. ユーザにたいして整数a,b,c,n の入力請求をして、
+これらを整数に変換し、関数check_fermatでこれらの整数値が
+フェルマーの定理を満たさないかどうかを示す関数を作成せよ。
+
+def proof():
+	a= int(raw_input("aの値を入力"))
+	b= int(raw_input("bの値を入力"))
+	c= int(raw_input("cの値を入力"))
+	n= int(raw_input("nの値を入力"))
+	check_fermat(a,b,c,n)
+
+以下実行結果
+
+aの値を入力:2
+bの値を入力:2
+cの値を入力:2
+nの値を入力:2
+だめだ。成り立たない
+
+aの値を入力:3
+bの値を入力:4
+cの値を入力:5
+nの値を入力:6
+だめだ。成り立たない
+
+練習問題5.4
+１． 三つ整数を引数とする関数is_triangle を作成せよ。
+この関数ではこれらの長さの楊枝から三角形が作れるときは
+”yes”をprint し、それ以外は”no”をprintする。
+以下プログラム
+
+def print_n():
+	print "no"
+
+def is_triangle(a,b,c):
+	if(a+b < c):
+		print_n()
+		return
+	elif(a+c < b):
+		print_n()
+		return
+	elif(b+c < a):
+		print_n()
+		return
+	else:
+		print"yes"
+
+２． ユーザに三つの楊枝の長さを入力させ、関数is_triangle 
+で検定するプログラムを作成せよ。
+以下プログラム
+def examination():	
+	a= float(raw_input("辺aの値を入力:"))
+	b= float(raw_input("辺bの値を入力:"))
+	c= float(raw_input("辺cの値を入力:"))
+	is_triangle(a,b,c)
+
+以下examination()の実行結果
+
+辺aの値を入力:2.5
+辺bの値を入力:3.5
+辺cの値を入力:4.5
+yes
+
+辺aの値を入力:2.0
+辺bの値を入力:2.0
+辺cの値を入力:6.0
+no
+
+
+
+
+
+
+
+
+
+
+
+
+
+
