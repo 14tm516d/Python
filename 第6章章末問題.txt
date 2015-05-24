@@ -1,0 +1,44 @@
+練習問題6.7
+一つの数a は、もしもこの数がb で割り切れ、しかもa/b がｂのべき乗で
+あるとき、b のべき乗である。二つの仮引数a、b を持つ関数is_power を作成せよ。この
+関数はa がb のべき乗であるときにTrue を返す。
+
+def is_power(a,b):
+    if (a == 0):
+         return False
+    elif(a % b == 0):
+        c = a / b
+        if(c == 1):
+            return True
+        else:
+            return is_power(c,b)
+    else:
+        return False
+
+print is_power(625,5)
+
+実行結果
+True
+
+
+練習問題6.8
+二つ整数a、ｂの最大公約数（GCD）はこの二つの整数を除算して余りがない整数のなかで最も大きな整数である。最大公約数を探す一つの方法はユーグリッド互除法である。
+この方法はa をb で割ったときの余りをr とすると、gcd(a,b) = gcd(b,r)であることからきている。基底ケースはgcd(a,0) = a を使う。二つの整数 a、b を仮引数とする関数gcd を作成せよ。戻り値はこの二つの数の最大公約数である。
+
+
+def gcd(a,b):
+    if(b == 0):
+        return a
+    else:
+        r = a % b
+        a = b
+        b = r
+        if(b == 0):
+            return a
+        else:
+            return gcd(a,b)
+        
+print gcd(1071,1029)
+
+実行結果
+21
