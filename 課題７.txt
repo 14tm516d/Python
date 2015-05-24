@@ -1,0 +1,81 @@
+練習問題7.1 関数print_nを再帰でなく、繰り返し処理をするプログラムに書き換えよ。
+
+def print_n(s,n):
+	if n <= 0:
+		return
+	for i in range(n):
+		print s
+	
+
+print_n("Hello",5)
+
+実行結果
+Hello
+Hello
+Hello
+Hello
+Hello
+
+def print_n(s,n):
+	if n <= 0:
+		return
+	while n != 0:
+		print s
+		n = n - 1
+
+print_n("Hello",5)
+
+実行結果
+Hello
+Hello
+Hello
+Hello
+Hello
+
+練習問題 7.2 以上の議論を基に関数square_root を作成せよ。この関数は仮引数とし
+て正の数a を持ち、この平方根を求める機能を持つ。平方根はこの関数の戻り値とする。
+
+def square_root(a):
+	x = a / 2.0
+	while True:
+		y = (x + a / x) / 2.0
+		if x == y:
+			break
+		else:
+			x = y
+	return y
+
+a=2, a=3, a=4, a=5としたときの実行結果
+
+1.41421356237
+1.73205080757
+2.0
+2.2360679775
+
+練習問題 7.4
+繰り返しユーザに入力請求をして文字列を入力、それをeval で評価して結果を表示するプ
+ルグラムeval_loop を作成せよ。この関数はユーザが'done'を入力したらループを抜け、
+最後に評価した値を戻り値とする。
+def eval_loop():
+	val = 0
+	while True:
+		str = raw_input("Please enter the string:")
+		if str == "done" :
+			break
+		else:
+			val = str
+			print eval(str)
+	return val
+
+print eval_loop()
+
+以下実行結果
+Please enter the string:int
+<type 'int'>
+Please enter the string:1+2*3+4
+11
+Please enter the string:math.pi
+3.14159265359
+Please enter the string:done
+math.pi
+
