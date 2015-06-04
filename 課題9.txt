@@ -1,0 +1,132 @@
+練習問題 9.1 ファイルwords.txt を読み、単語の長さが20（特殊文字を含めないで）
+以上ある単語のみ表示するプログラムを作成せよ。
+
+def display():
+	fin = open('words.txt')
+	for line in fin:
+		word = line.strip()
+		if(20 <= len(word)):
+			print word
+
+以下実行結果
+
+counterdemonstration
+counterdemonstrations
+counterdemonstrators
+hyperaggressivenesses
+hypersensitivenesses
+microminiaturization
+microminiaturizations
+representativenesses
+
+
+練習問題 9.2
+与えられた単語が文字"e"を一つも含んでいないとTrue を返す関数has_no_e を作成
+せよ。
+前節のプログラムを単語が"e"を含んでいないときにのみ単語を表示するように変更し、
+文字"e"を含まない単語の全単語中に占めるパーセントを計算しなさい。
+
+def has_no_e(word):
+	if("e" in word):
+			return False
+	return True
+
+def display2():
+	fin = open('words.txt')
+	a = 0
+	t = 0
+	for line in fin:
+		word = line.strip()
+		if(has_no_e(word)):
+			print word
+			a += 1.0
+			t += 1.0
+		else:
+			a += 1.0
+	return t/a*100
+
+文字eを含まない単語は33.073834231%であった。
+
+
+練習問題 9.3 
+文字列と文字を引数とする関数avoids を作成せよ。
+この関数はその文字列に該当する文字が一つも含まれていないときはTrue を返す。
+ユーザから入力された文字に対して、この文字を一つも含まない単語を表示するように
+前節のプログラムを変更せよ。
+また、このような文字 5 個を使ったときに排除される単語数が最少になるような5 個の組み合わせを見つけることができるか？
+
+def avoids(word,letter):
+	for i in word:
+		if(i == letter):
+			return False
+	return True
+
+def display2():
+	fin = open('words.txt')
+	a = 0
+	t = 0
+	letter = raw_input()
+	for line in fin:
+		word = line.strip()
+		if(avoids(word,letter)):
+			print word
+			a += 1.0
+			t += 1.0
+		else:
+			a += 1.0
+	return t/a*100
+
+文字aを含まない単語は50.256130886%であった。
+
+練習問題 9.4 
+文字列と文字の組み合わせ（文字列）を引数とする関数uses_only を作成せよ。
+この関数はこの文字列がこの組み合わせ文字でのみ構成されているときはTrue を返す。
+
+def use_only(word,combination):
+	for i in word:
+		if(i in combination):
+			pass
+		else:
+			return False
+	return True
+
+abcのみで構成される単語は以下の8個であった。
+aa
+aba
+abaca
+ba
+baa
+baba
+bacca
+cab
+
+練習問題 9.5 
+文字列と要求される文字の組み合わせ（文字列）を引数とする関数
+uses_all を作成せよ。この関数はこの文字列が要求される文字を全て少なくとも一回は
+使っているときはTrue を返す関数である。全ての母音"aeiou"を使うような単語は何個
+位あるのだろうか？"aeiouy"ではどうかな？
+
+def uses_all(word,combination):
+	for i in combination:
+		if(avoids(word,i)):
+				return False
+	return True
+
+全ての母音"aeiou"を使うような単語は598個、"aeiouy"では42個であった。
+
+練習問題 9.6 
+引数として受け取った単語の中の文字の並びがアルファベット順（同じ文字が並ぶのはよいとする）
+に並んでいるときTrue を返す関数is_abecedarian を作成せよ。
+この条件を満たす単語は何個位あるのだろうか？
+
+
+def is_abecedarian(word):
+	k = 0
+	for i in word:
+		for j in word[k+1:]:
+			if(j < i):
+				return False
+		k += 1
+	return True
+
+この条件を満たす単語は596個であった。
