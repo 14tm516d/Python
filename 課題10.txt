@@ -7,8 +7,7 @@ def nested_sum(nest):
 		if(type(x) == int):
 			t += x
 		elif(type(x) == list):
-			for y in x:
-				t += y
+			t += nested_sum(x)
 	return t
 
 a = [1,2,3,4,[5,6],7,8,9,10]
@@ -26,6 +25,10 @@ def capitalize_all(t):
 	for s in t:
 		res.append(s.capitalize())
 	return res
+
+リスト内包表記を用いると
+def capitalize_all(t):
+	return [s.capitalize() for s in t]
 
 def capitalize_nested(nest):
 	res = capitalize_all(nest)
@@ -82,6 +85,12 @@ print middle(a)
 
 実行結果
 [2, 3, 4, 5, 6, 7, 8, 9]
+
+def middle2(a):
+	t1 = a[:]
+	t1.pop(0)
+	t1.pop()
+	return t1
 
 
 練習問題 10.5 
